@@ -1,0 +1,30 @@
+version: '3.0'
+
+# Define the services/containers to be run
+services:
+#  angular: # name of the first service
+#    build: angular-client # specify the directory of the Dockerfile
+#    ports:
+#      - "4200:4200" # specify port forewarding
+#
+#  express: #name of the second service
+#    build: express-server # specify the directory of the Dockerfile
+#    ports:
+#      - "3000:3000" #specify ports forewarding
+#
+#  dbmongo: # name of the third service
+#    image: mongo # specify image to build container from
+#    ports:
+#      - "27017:27017" # specify port forewarding
+#
+  dbmysql:
+    image: mysql
+    command: --default-authentication-plugin=mysql_native_password
+    environment:
+      MYSQL_ROOT_PASSWORD: example
+    ports:
+      - "3306:3306"
+    volumes:
+      - my-datavolume:/var/lib/mysql
+volumes:
+  my-datavolume:
